@@ -1,5 +1,5 @@
 import { html, until } from "../api/library.js";
-import { getRecipes } from "../api/recipeService.js";
+import { getPlaces } from "../api/placesService.js";
 import { createSubmitHandler, parseQuery } from "../api/util.js";
 import { spinner } from "./common.js";
 
@@ -56,7 +56,7 @@ export function catalogPage(ctx) {
 };
 
 async function loadRecipes(page = 1, search = "") {
-    let { results: recipes } = await getRecipes(page, search);
+    let { results: recipes } = await getPlaces(page, search);
 
     if (recipes.length == 0) {
         return html`<p>No recipes found. Be the first to post a new recipe!</p>`

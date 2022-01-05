@@ -1,5 +1,5 @@
 import { html } from "../api/library.js";
-import { createRecipes } from "../api/recipeService.js";
+import { createPlace } from "../api/placesService.js";
 import { createSubmitHandler } from "../api/util.js";
 import { errorMsg, field } from "./common.js";
 
@@ -50,7 +50,7 @@ export function createPage(ctx) {
                 description: data.description.split("\n").filter(row => row != "")
             }
 
-            let result = await createRecipes(recipe);
+            let result = await createPlace(recipe);
             event.target.reset();
             ctx.page.redirect("/details/" + result.objectId);
 

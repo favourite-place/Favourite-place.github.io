@@ -1,4 +1,4 @@
-import { deleteRecipe, getRecipeById } from '../api/recipeService.js';
+import { deletePlace, getPlaceById } from '../api/placesService.js';
 import { html } from '../library/lit-html/lit-html.js';
 import { until } from '../library/lit-html/directives/until.js';
 import { commentsView } from './comments.js';
@@ -40,7 +40,7 @@ export function detailsPage(ctx) {
 }
 
 async function loadRecipe(ctx) {
-    const recipe = await getRecipeById(ctx.params.id);
+    const recipe = await getPlaceById(ctx.params.id);
     const isOwner = ctx.user && ctx.user.id == recipe.owner.objectId;
 
     return recipeCard(recipe, isOwner, onDelete);
@@ -49,8 +49,8 @@ async function loadRecipe(ctx) {
         const choice = confirm('Are you sure you want to delete this recipe?');
 
         if (choice) {
-            await deleteRecipe(ctx.params.id);
-            ctx.notify('Recipe deleted');
+            await deletePlace(ctx.params.id);
+            ctx.notify('Place deleted');
             ctx.page.redirect('/catalog');
         }
     }

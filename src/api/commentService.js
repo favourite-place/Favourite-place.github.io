@@ -1,8 +1,8 @@
 import * as api from "./api.js";
 import { addOwner, createPointer, endpoints } from "./data.js";
 
-export function getCommentsByRecipeId(recipeId) {
-    return api.get(endpoints.commentsByRecipe(recipeId));
+export function getCommentsByPlaceId(recipeId) {
+    return api.get(endpoints.commentsByPlace(recipeId));
 };
 
 export function createComment(recipeId, comment) {

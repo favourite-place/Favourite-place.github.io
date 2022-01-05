@@ -1,6 +1,6 @@
 import { html, until, render } from "../api/library.js";
 import { spinner } from "./common.js";
-import { createComment, getCommentsByRecipeId } from "../api/commentService.js";
+import { createComment, getCommentsByPlaceId } from "../api/commentService.js";
 import { createSubmitHandler } from "../api/util.js";
 
 
@@ -45,7 +45,7 @@ let commentCard = (comment) => html`
 
 export function commentsView(ctx, recipeId) {
     let parent = document.getElementById("comments-container");
-    let commentsPromise = getCommentsByRecipeId(recipeId);
+    let commentsPromise = getCommentsByPlaceId(recipeId);
 
     update();
 

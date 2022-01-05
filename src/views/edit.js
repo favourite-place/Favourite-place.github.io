@@ -1,4 +1,4 @@
-import { getRecipeById, updateRecipes } from '../api/recipeService.js';
+import { getPlaceById, updatePlace } from '../api/placesService.js';
 import { html } from '../library/lit-html/lit-html.js';
 import { createSubmitHandler } from '../api/util.js';
 import { errorMsg, field } from './common.js';
@@ -33,7 +33,7 @@ const editTemplate = (onSubmit, errors, data) => html`
 
 export async function editPage(ctx) {
     const recipeId = ctx.params.id;
-    const recipe = await getRecipeById(recipeId);
+    const recipe = await getPlaceById(recipeId);
     recipe.location = recipe.location.join('\n');
     recipe.description = recipe.description.join('\n');
 
@@ -58,7 +58,7 @@ export async function editPage(ctx) {
                 description: data.description.split('\n').filter(r => r != '')
             };
 
-            const result = await updateRecipes(recipeId, recipe);
+            const result = await updatePlace(recipeId, recipe);
             event.target.reset();
             ctx.notify('Recipe updated');
             ctx.page.redirect('/details/' + recipeId);

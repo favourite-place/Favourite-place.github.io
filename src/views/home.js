@@ -1,5 +1,5 @@
 import { html, until } from "../api/library.js";
-import { getRecentRecipes } from "../api/recipeService.js";
+import { getRecentPlaces } from "../api/placesService.js";
 import { spinner } from "./common.js";
 
 let homeTemplate = (recipePromise) => html`
@@ -32,7 +32,7 @@ export function homePage(ctx) {
 };
 
 async function loadRecipes() {
-    let { results: recipes } = await getRecentRecipes();
+    let { results: recipes } = await getRecentPlaces();
 
     if (recipes.length == 0) {
         return html`<p>No favorite place found. Be the first to post a new favorite!</p>`
