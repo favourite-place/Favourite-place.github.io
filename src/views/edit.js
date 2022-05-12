@@ -60,7 +60,7 @@ export async function editPage(ctx) {
 
             const result = await updatePlace(recipeId, recipe);
             event.target.reset();
-            ctx.notify('Recipe updated');
+            ctx.notify('Place updated');
             ctx.page.redirect('/details/' + recipeId);
         } catch (err) {
             update(err, data);

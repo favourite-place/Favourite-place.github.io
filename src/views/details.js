@@ -46,7 +46,7 @@ async function loadRecipe(ctx) {
     return recipeCard(recipe, isOwner, onDelete);
 
     async function onDelete() {
-        const choice = confirm('Are you sure you want to delete this recipe?');
+        const choice = confirm('Are you sure you want to delete this place?');
 
         if (choice) {
             await deletePlace(ctx.params.id);

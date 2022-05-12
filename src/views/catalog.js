@@ -59,7 +59,7 @@ async function loadRecipes(page = 1, search = "") {
     let { results: recipes } = await getPlaces(page, search);
 
     if (recipes.length == 0) {
-        return html`<p>No recipes found. Be the first to post a new recipe!</p>`
+        return html`<p>No places found. Be the first to post a new place!</p>`
     } else {
         return recipes.map(recipePreview);
     };
